@@ -1,0 +1,15 @@
+<div [ngClass]="{'closed': !isOpen}">
+  <div class="modal-overlay" (click)="close(true)"></div>
+  <div class="modal">
+    <div class="title" *ngIf="modalConfigs.title">
+      <span class="title-text">{{ modalConfigs.title }}</span>
+    </div>
+    <div class="body">
+      <ng-content></ng-content>
+    </div>
+    <div class="footer" *ngIf="modalConfigs.showFooter">
+      <button type="button" class="btn btn-primary" (click)="close()">Close</button>
+      <button type="button" class="btn btn-primary" (click)="modalConfigs.submitCallback();close()" *ngIf="modalConfigs.isConfirm">{{modalConfigs.submitButtonLable}}</button>
+    </div>
+  </div>
+</div>
